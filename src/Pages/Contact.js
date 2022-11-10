@@ -10,9 +10,9 @@ function Contact() {
 
   const emailValidation=()=>{
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    if(regEx.test(email)){
-      setMessage("Email is Valid")
-    }else if(!regEx.test(email) && email !==  ""){
+    // if(regEx.test(email)){ 
+    //   setMessage("Email is Valid")
+     if(!regEx.test(email) && email !==  ""){
       setMessage("Email is not valid");
     }else{
       setMessage("");
@@ -36,6 +36,7 @@ function Contact() {
   }
 
   function OnSubmitForm() {
+    emailValidation()
     setisSubmitted(true);
   }
 
@@ -85,6 +86,8 @@ function Contact() {
             required
           />
           {isSubmitted && email === '' && <p> This field is required </p>}
+          {message}
+
           {/*Lorsque je tape un mauvais format d'e-mail, je n'ai pas reçu le
           message d'erreur, vous devez ajouter*/}
         </div>
@@ -92,7 +95,6 @@ function Contact() {
         <button className="btn btn-danger" onClick={OnSubmitForm}>
           SUBMIT
         </button>
-        {message}
       </form>
     </div>
   );
