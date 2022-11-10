@@ -6,6 +6,20 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setisSubmitted] = useState(false);
 
+  const[message, setMessage] = useState('');
+
+  const emailValidation=()=>{
+    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+    if(regEx.test(email)){
+      setMessage("Email is Valid")
+    }else if(!regEx.test(email) && email !==  ""){
+      setMessage("Email is not valid");
+    }else{
+      setMessage("");
+    }
+  };
+
+
   function OnChangeSurname(text) {
     console.log(text.target.value);
     setSurname(text.target.value);
@@ -78,6 +92,7 @@ function Contact() {
         <button className="btn btn-danger" onClick={OnSubmitForm}>
           SUBMIT
         </button>
+        {message}
       </form>
     </div>
   );
