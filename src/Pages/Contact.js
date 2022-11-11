@@ -35,9 +35,10 @@ function Contact() {
     setEmail(text.target.value);
   }
 
-  function OnSubmitForm() {
+  function OnSubmitForm(e) {
     emailValidation()
     setisSubmitted(true);
+    
   }
 
   return (

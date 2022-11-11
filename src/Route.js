@@ -4,6 +4,7 @@ import Contact from "./Pages/Contact";
 import Home from "./Pages/Home";
 import { Route, Routes } from "react-router-dom";
 import ErrorPage from "./Pages/ErrorPage";
+import EvenOdd from "./Pages/EvenOdd";
 
 
 function RouteFormation(){
@@ -13,6 +14,7 @@ return <div>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/evenodd' element={<EvenOdd />} />
         <Route path="*" element={<ErrorPage />} />
     </Routes>
 
