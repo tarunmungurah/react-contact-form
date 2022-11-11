@@ -5,7 +5,10 @@ function EvenOdd() {
   const [isSubmitted, setisSubmitted] = useState(false);
 
   const numValidation = () => {
-    if (number % 2 === 0) {
+    if (number === '' || number === 'e'){
+        alert('Number is required');
+    }
+    else if (number % 2 === 0) {
       alert('The number is even.');
     }
     // if the number is odd
@@ -35,7 +38,7 @@ function EvenOdd() {
           </label>
           <input
             className="form-control"
-            type="text"
+            type="number"
             id="number"
             onChange={OnChangeNumber}
             value={number}
