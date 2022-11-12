@@ -5,11 +5,11 @@ function EvenOdd() {
   const [isSubmitted, setisSubmitted] = useState(false);
 
   const numValidation = () => {
-    if (number === '' || number === 'e'){
-        alert('Number is required');
-    }
-    else if (number % 2 === 0) {
+    if (number === '' || number === 'e') {
+      alert('Number is required');
+    } else if (number % 2 === 0) {
       alert('The number is even.');
+      // Faut pas utiliser l'alerte pour le message , faut afficher le message en bas de l'input
     }
     // if the number is odd
     else {
