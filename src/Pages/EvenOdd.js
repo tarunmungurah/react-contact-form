@@ -3,18 +3,20 @@ import React, { useState } from 'react';
 function EvenOdd() {
   const [number, setNumber] = useState('');
   const [isSubmitted, setisSubmitted] = useState(false);
-
   const[message, setMessage] = useState('');
+
+
 
   const numValidation = () => {
     const regEx = /^-?\d{1,3}(,\d{3})*$/
-    if (regEx.test(number) && number % 2 === 0) {
+    let tmpnumberformatted = parseInt(number);
+    if (regEx.test(tmpnumberformatted) && tmpnumberformatted % 2 === 0) {
       setMessage('The number is even.');
     }
-    else if (regEx.test(number) && number % 2 !== 0) {
+    else if (regEx.test(tmpnumberformatted) && tmpnumberformatted % 2 !== 0) {
       setMessage('The number is odd.');
     }
-    else if (number ===  "" ) {
+    else if (tmpnumberformatted ===  "" ) {
       setMessage('');
     }
     else {
@@ -23,12 +25,14 @@ function EvenOdd() {
   };
 
   function OnChangeNumber(text) {
-    console.log(text.target.value);
-    setNumber(text.target.value);
+    let tmpnumber = text.target.value.replace(/,/g, '.').replace(/\s/g, "");
+    let tmpnumberformatted = parseInt(tmpnumber);
+
+    setNumber(tmpnumber);
     setMessage('');
    
-    if(isNaN(text.target.value)){
-      console.log(text.target.value + " is not a number <br/>");
+    if(isNaN(tmpnumberformatted)){
+      console.log(tmpnumberformatted + " is not a number <br/>");
       setMessage('Please enter a number');
      }
   }
@@ -58,7 +62,8 @@ function EvenOdd() {
           {isSubmitted && number === '' && <p> This field is required </p>}
           {message}
         </div>
-        <button className="btn btn-danger" onClick={OnSubmitForm}>
+        <button className="btn btn-danger" disabled={isNaN(number) || number== ""}  onClick={OnSubmitForm}>
+            
           SUBMIT
         </button>
       </form>
