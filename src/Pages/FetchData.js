@@ -23,12 +23,17 @@ function FetchData(){
       <td>{data.status_subscription}</td>
       <td>{data.start_date_subscription}</td>
       <td>{data.end_date_subscription}</td>
-      <td>{data.social_link_fb}</td>
+      <td><a href={data.social_link_fb}>{data.social_link_fb}</a></td>
       <td>{data.social_link_insta}</td>
       <td>{data.web_site_url}</td>
       <td>{data.phone_number}</td>
       <td>{data.logo.id}</td>
-      <td><img src={data.logo.url} /></td>
+      <td><img src={data.logo.url} width="100" /></td>
+      <td> {data.photos.map((data1, index1) => {
+              return (
+                <img src={data1.url} width="100"/>
+              );
+            })}</td>
     </tr>
     )
   })
@@ -50,6 +55,7 @@ function FetchData(){
             <th>Phone Number</th>
             <th>Logo Id</th>
             <th>Logo Url</th>
+            <th>Photos Id</th>
           </tr>
           {arr}
         </table>
