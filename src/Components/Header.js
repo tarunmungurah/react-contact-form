@@ -10,6 +10,7 @@ function Header() {
             <Link to='/about'>About</Link>
             <Link to='/contact'>Contact</Link>
             <Link to='/evenodd'>EvenOdd</Link>
+            <Link to='/fetchdata'>FetchData</Link>
             </div>
         </nav>
     </div>);
