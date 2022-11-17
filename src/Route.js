@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import ErrorPage from "./Pages/ErrorPage";
 import EvenOdd from "./Pages/EvenOdd";
 import FetchData from "./Pages/FetchData";
+import FetchDatabyId from "./Pages/FetchDatabyId";
 
 
 function RouteFormation(){
@@ -17,6 +18,7 @@ return <div>
         <Route path='/contact' element={<Contact />} />
         <Route path='/evenodd' element={<EvenOdd />} />
         <Route path='/fetchdata' element={<FetchData />} />
+        <Route path ='/fetchdatabyid/:id' element={<FetchDatabyId />} />
         <Route path="*" element={<ErrorPage />} />
     </Routes>
 

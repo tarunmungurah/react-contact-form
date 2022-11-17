@@ -1,5 +1,8 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import FetchDatabyId from './FetchDatabyId';
+import {Link} from "react-router-dom";
+
 
 function FetchData() {
   const [data, setData] = useState([]);
@@ -79,6 +82,10 @@ function FetchData() {
           })}
         </td>
         <td>{data.thematique.id}</td>
+
+
+
+        
         <td>{data.thematique.name}</td>
         <td>{data.adress.id}</td>
         <td>{data.adress.line1}</td>
@@ -103,8 +110,11 @@ function FetchData() {
         Fetching data using <i>Axios</i>
       </h1>
       <table>
+     {/* <button className="btn btn-danger">VIEW</button> */}
+     <Link to="/fetchdatabyid/:id" element={<FetchDatabyId/>} className="btn btn-danger">VIEW</Link>
+
         <tr>
-          <th>Id</th>
+          <th>Id </th>          
           <th>Title</th>
           <th>Presentation</th>
           <th>Status Subscription</th>
