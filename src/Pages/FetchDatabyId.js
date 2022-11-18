@@ -37,7 +37,6 @@ function FetchDatabyId(){
           <div><a href={data.web_site_url}>{data.web_site_url}</a></div>
           <div>{data.phone_number}</div>
           <div>{data.logo?.id}</div>
-          <div><img src={data.logo?.url} alt="White Cover Consulting logo" width="100" /></div>
           <div>{' '}
           {data.photos?.map((data1, index1) => {
             return( 
