@@ -99,6 +99,7 @@ function FetchData() {
         <td>{data.adress.location.type}</td>
         <td>{data.adress.location.lat}</td>
         <td>{data.adress.location.lng}</td>
+      <td><Link to={`/fetchdatabyid/${data.id}`} className="btn btn-danger">VIEW</Link></td>
 
       </tr>
     );
@@ -111,7 +112,7 @@ function FetchData() {
       </h1>
       <table>
      {/* <button className="btn btn-danger">VIEW</button> */}
-     <Link to="/fetchdatabyid/:id" element={<FetchDatabyId/>} className="btn btn-danger">VIEW</Link>
+     
 
         <tr>
           <th>Id </th>          

@@ -17,7 +17,19 @@ function FetchDatabyId(){
     
 
     return (
-        <div>{data.id}</div>
+      <div className='displayed_data'>
+        <div className='id'> {data.id}</div>
+        <div className='title'>{data.title}</div>
+        <div>{data.presentation}</div>
+        <div>{data.status_subscription}</div>
+        <div>{data.start_date_subscription}</div>
+        <div>{data.end_date_subscription}</div>
+        <div><a href={data.social_link_fb}>{data.social_link_fb}</a></div>
+        <div> <a href={data.social_link_insta}>{data.social_link_insta}</a></div>
+        <div><a href={data.web_site_url}>{data.web_site_url}</a></div>
+        <div>{data.phone_number}</div>
+        <div>{data.logo.id}</div>
+      </div>
         );
     
 }

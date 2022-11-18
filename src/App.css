@@ -38,18 +38,30 @@
 }
 
 
-table {
-  font-family: arial, sans-serif;
+table,
+th,
+td {
+  padding: 10px;
+  border: 1px solid black;
   border-collapse: collapse;
-  width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.id{
+    width: 200px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top: 100px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.title{
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to bottom left, #553c9a, #ee4b2b);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
+
