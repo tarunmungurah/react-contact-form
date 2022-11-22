@@ -1,8 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import FetchDatabyId from './FetchDatabyId';
-import {Link} from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 function FetchData() {
   const [data, setData] = useState([]);
@@ -30,32 +28,37 @@ function FetchData() {
         <td>
           <a href={data.social_link_fb}>{data.social_link_fb}</a>
         </td>
-        <td> <a href={data.social_link_insta}>{data.social_link_insta}</a></td>
-        <td><a href={data.web_site_url}>{data.web_site_url}</a></td>
+        <td>
+          {' '}
+          <a href={data.social_link_insta}>{data.social_link_insta}</a>
+        </td>
+        <td>
+          <a href={data.web_site_url}>{data.web_site_url}</a>
+        </td>
         <td>{data.phone_number}</td>
         <td>{data.logo.id}</td>
         <td>
           {/*img elements must have an alt prop, either with meaningful text, or an empty string for decorative images*/}
-          <img src={data.logo.url} alt="White Cover Consulting logo" width="100" />
+          <img
+            src={data.logo.url}
+            alt="White Cover Consulting logo"
+            width="100"
+          />
         </td>
         <td>
           {' '}
           {data.photos.map((data1, index1) => {
-            return( 
-            <div key="index1">
-            {data1.id}         
-            </div>
-            )
+            return <div key="index1">{data1.id}</div>;
           })}
         </td>
         <td>
           {' '}
           {data.photos.map((data1, index1) => {
-            return( 
-            <div key="index1">
-            <img src={data1.url} alt="Photos" width="100" />
-            </div>
-            )
+            return (
+              <div key="index1">
+                <img src={data1.url} alt="Photos" width="100" />
+              </div>
+            );
           })}
         </td>
         <td>{data.subscription.id}</td>
@@ -64,28 +67,17 @@ function FetchData() {
         <td>
           {' '}
           {data.activities.map((activities1, index2) => {
-            return( 
-            <div key="index2">
-            {activities1.id}        
-            </div>
-            )
+            return <div key="index2">{activities1.id}</div>;
           })}
         </td>
         <td>
           {' '}
           {data.activities.map((activities1, index2) => {
-            return( 
-            <div key="index2">
-            {activities1.name}        
-            </div>
-            )
+            return <div key="index2">{activities1.name}</div>;
           })}
         </td>
         <td>{data.thematique.id}</td>
 
-
-
-        
         <td>{data.thematique.name}</td>
         <td>{data.adress.id}</td>
         <td>{data.adress.line1}</td>
@@ -99,8 +91,11 @@ function FetchData() {
         <td>{data.adress.location.type}</td>
         <td>{data.adress.location.lat}</td>
         <td>{data.adress.location.lng}</td>
-      <td><Link to={`/fetchdatabyid/${data.id}`} className="btn btn-danger">VIEW</Link></td>
-
+        <td>
+          <Link to={`/fetchdatabyid/${data.id}`} className="btn btn-danger">
+            VIEW
+          </Link>
+        </td>
       </tr>
     );
   });
@@ -111,11 +106,10 @@ function FetchData() {
         Fetching data using <i>Axios</i>
       </h1>
       <table>
-     {/* <button className="btn btn-danger">VIEW</button> */}
-     
+        {/* <button className="btn btn-danger">VIEW</button> */}
 
         <tr>
-          <th>Id </th>          
+          <th>Id </th>
           <th>Title</th>
           <th>Presentation</th>
           <th>Status Subscription</th>
@@ -147,7 +141,6 @@ function FetchData() {
           <th>Adress Location-type</th>
           <th>Adress Location-lat</th>
           <th>Adress Location-lng</th>
-
         </tr>
         {arr}
       </table>
