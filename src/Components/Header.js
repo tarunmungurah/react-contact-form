@@ -12,7 +12,7 @@ function Header() {
                     <Link to='/contact'>Contact</Link>
                     <Link to='/evenodd'>EvenOdd</Link>
                     <Link to='/fetchdata'>FetchData</Link>
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login' className="login_link">Login</Link>
                 </div>
             </div>
         </nav>

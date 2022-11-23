@@ -1,30 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState }from "react";
+import axios from "axios";
 
 function Login(){
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitted, setisSubmitted] = useState(false);
-  const[message, setMessage] = useState('');
+  const [error, setError] = React.useState('');
+
+  const[message_email, setMessageEmail] = useState('');
+  const[message_password, setMessagePassword] = useState('');
+
+    const payload = {
+        identify:email,
+        password:password
+      }
+    axios.post(
+      'https://bat-recup-staging-backend.cleverapps.io/api/users-permissions/login-annuaire' + payload
+    )
+      .then((res) => {
+        console.log(res.data);
+
+      })
+      .catch((err) => {
+        if (err.code === 'ERR_BAD_REQUEST') setError('Email/Pw does not exist!');
+        console.log(err)
+      })
+  
+
+
 
   const emailValidation=()=>{
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     // if(regEx.test(email)){ 
     //   setMessage("Email is Valid")
      if(!regEx.test(email) && email !==  ""){
-      setMessage("Email is not valid");
+      setMessageEmail("Email is not valid");
     }else{
-      setMessage("");
+      setMessageEmail("");
     }
   };
 
-  const passwordValidation=()=>{
-    const regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g
-    if(!regEx.test(password) && password !==  ""){
-        setMessage("Password is not valid");
-      }else{
-        setMessage("");
-      }
-  };
+//   const passwordValidation=()=>{
+//     const regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g
+//     if(!regEx.test(password) && password !==  ""){
+//         setMessagePassword("Password is not valid");
+//       }else{
+//         setMessagePassword("");
+//       }
+//   };
 
   function OnChangeEmail(text) {
     console.log(text.target.value);
@@ -38,7 +61,7 @@ function Login(){
 
   function OnSubmitForm(e) {
     emailValidation()
-    passwordValidation()
+    // passwordValidation()
     setisSubmitted(true);
   }
 
@@ -57,9 +80,10 @@ function Login(){
                             required
                             className="login__input"
                             placeholder="Email"/>
-                        {message}
-                        {isSubmitted && email === '' && <p className="required"> This field is required </p>}
                         </div>
+                        {isSubmitted && email === '' && <p className="required"> This field is required </p>}
+                        {message_email}
+
 
 
                         <div className="login__field">
@@ -72,9 +96,8 @@ function Login(){
                             required
                             className="login__input"
                             placeholder="Password"/>
-                        {message}
+                        {message_password}
                         {isSubmitted && password === '' && <p className="required"> This field is required </p>}
-                          
                         </div>
 
                         <button class="button login__submit"  onClick={OnSubmitForm}>
