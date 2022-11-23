@@ -24,9 +24,9 @@
   color: white;
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -44,6 +44,7 @@ td {
   padding: 10px;
   border: 1px solid black;
   border-collapse: collapse;
+  
 }
 
 .id{
@@ -53,7 +54,6 @@ td {
     padding: 10px;
     margin-left: auto;
     margin-right: auto;  
-    margin-top: 100px;
 }
 
 .title{
@@ -65,3 +65,23 @@ td {
   -webkit-background-clip: text;
 }
 
+.data{
+  background-color: aqua;
+  padding: 10px;
+  border: 2px solid black;
+  margin-bottom: 50px;
+}
+
+
+.nav-container{
+  justify-content: space-between;
+    display: flex;
+    background-color: black;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+
+nav{
+  background-color: black;
+}
