@@ -38,7 +38,6 @@ function Contact() {
   function OnSubmitForm(e) {
     emailValidation()
     setisSubmitted(true);
-    
   }
 
   return (
