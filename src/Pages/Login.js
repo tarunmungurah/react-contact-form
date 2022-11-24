@@ -10,32 +10,15 @@ function Login(){
   const[message_email, setMessageEmail] = useState('');
   const[message_password, setMessagePassword] = useState('');
 
-    const payload = {
-        identify:email,
-        password:password
-      }
-    axios.post(
-      'https://bat-recup-staging-backend.cleverapps.io/api/users-permissions/login-annuaire' + payload
-    )
-      .then((res) => {
-        console.log(res.data);
-
-      })
-      .catch((err) => {
-        if (err.code === 'ERR_BAD_REQUEST') setError('Email/Pw does not exist!');
-        console.log(err)
-      })
-  
-
-
 
   const emailValidation=()=>{
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     // if(regEx.test(email)){ 
     //   setMessage("Email is Valid")
-     if(!regEx.test(email) && email !==  ""){
+    if(!regEx.test(email) && email !==  ""){
       setMessageEmail("Email is not valid");
-    }else{
+    }
+    else{
       setMessageEmail("");
     }
   };
@@ -63,6 +46,23 @@ function Login(){
     emailValidation()
     // passwordValidation()
     setisSubmitted(true);
+
+
+    const payload = {
+      identifier:email,
+      password:password
+    }
+    axios.post(
+      'https://bat-recup-staging-backend.cleverapps.io/api/users-permissions/login-annuaire' , payload
+    )
+      .then((res) => {
+        console.log(res.data);
+
+      })
+      .catch((err) => {
+        if (err.code === 'ERR_BAD_REQUEST') setError('Email/Pw does not exist!');
+        console.log(err)
+      })
   }
 
     return (
@@ -100,9 +100,9 @@ function Login(){
                         {isSubmitted && password === '' && <p className="required"> This field is required </p>}
                         </div>
 
-                        <button class="button login__submit"  onClick={OnSubmitForm}>
-                            <span class="button__text">Log In Now</span >
-                            <i class="button__icon fas fa-chevron-right"></i>
+                        <button className="button login__submit"  onClick={OnSubmitForm}>
+                            <span className="button__text">Log In Now</span >
+                            <i className="button__icon fas fa-chevron-right"></i>
                         </button>				
                     </form>
                 </div>
