@@ -46,8 +46,7 @@ function Login(){
     emailValidation()
     // passwordValidation()
     setisSubmitted(true);
-
-
+    e.preventDefault();
     const payload = {
       identifier:email,
       password:password
