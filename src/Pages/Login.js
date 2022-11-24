@@ -1,5 +1,6 @@
 import React, { useEffect, useState }from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login(){
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ function Login(){
 
   const[message_email, setMessageEmail] = useState('');
   const[message_password, setMessagePassword] = useState('');
+  const navigate = useNavigate();
 
 
   const emailValidation=()=>{
@@ -56,7 +58,7 @@ function Login(){
     )
       .then((res) => {
         console.log(res.data);
-
+        navigate('/Dashboard')
       })
       .catch((err) => {
         if (err.code === 'ERR_BAD_REQUEST') setError('Email/Pw does not exist!');
