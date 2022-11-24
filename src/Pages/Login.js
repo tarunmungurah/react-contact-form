@@ -37,6 +37,7 @@ function Login(){
   function OnChangeEmail(text) {
     console.log(text.target.value);
     setEmail(text.target.value);
+    setError('');
   }
 
   function OnChangePassword(text) {
@@ -61,7 +62,8 @@ function Login(){
         navigate('/Dashboard')
       })
       .catch((err) => {
-        if (err.code === 'ERR_BAD_REQUEST') setError('Email/Pw does not exist!');
+        if (err.code === 'ERR_BAD_REQUEST') 
+        setError('Not Found');
         console.log(err)
       })
   }
@@ -81,9 +83,11 @@ function Login(){
                             required
                             className="login__input"
                             placeholder="Email"/>
+                        {/* <p>{error}</p> */}
+                        <p className="msg_email">{message_email}</p>
+
                         </div>
                         {isSubmitted && email === '' && <p className="required"> This field is required </p>}
-                        {message_email}
 
 
 
@@ -97,11 +101,12 @@ function Login(){
                             required
                             className="login__input"
                             placeholder="Password"/>
-                        {message_password}
+                            
+                        <p>{message_password}</p>
                         {isSubmitted && password === '' && <p className="required"> This field is required </p>}
                         </div>
 
-                        <button className="button login__submit"  onClick={OnSubmitForm}>
+                        <button className="button login__submit" onClick={OnSubmitForm}>
                             <span className="button__text">Log In Now</span >
                             <i className="button__icon fas fa-chevron-right"></i>
                         </button>				

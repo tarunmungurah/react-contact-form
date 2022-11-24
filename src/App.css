@@ -269,3 +269,8 @@ nav{
 .login_link{
 	color: greenyellow;
 }
+
+.msg_email{
+	color: red;
+	font-style: italic;
+}
