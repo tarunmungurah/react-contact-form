@@ -48,6 +48,9 @@ function Login() {
     // passwordValidation()
     setisSubmitted(true);
     e.preventDefault();
+
+    if (email && password) {
+
     const payload = {
       identifier: email,
       password: password,
@@ -67,90 +70,59 @@ function Login() {
         if (err.code === 'ERR_BAD_REQUEST') setError('Invalid identifier or password');
         console.log(err)
       })
+      
+    }
   }
 
   return (
     <div className="container">
-      <div className="screen">
-        <div className="screen__content">
-            <form className="login">
-              <div className="login__field">
-                <i className="login__icon fas fa-user"></i>
-                <input
-                  type="email"
-                  id="email"
-                  onChange={OnChangeEmail}
-                  value={email}
-                  required
-                  className="login__input"
-                  placeholder="Email"
-                />
-                <p className="msg_email">{message_email}</p>
-              </div>
-              {isSubmitted && email === '' && <p className="required"> This field is required </p>}
-
-              <div className="login__field">
-                  <i className="login__icon fas fa-lock"></i>
-                  <input 
-                  type="password" 
-                  id="password"
-                  onChange={OnChangePassword}
-                  value={password}
-                  required
-                  className="login__input"
-                  placeholder="Password"/>
-                  
-              <p>{message_password}</p>
-              {isSubmitted && password === '' && <p className="required"> This field is required </p>}
-              </div>
-              <p>{error}</p>
-
-              <button className="button login__submit" onClick={OnSubmitForm}>
-                <span className="button__text">Log In Now</span >
-                <i className="button__icon fas fa-chevron-right"></i>
-              </button>				
-            </form>
+        <div className="screen">
+            <div className="screen__content">
+                <form className="login">
+                    <div className="login__field">
+                      <i className="login__icon fas fa-user"></i>
+                      <input
+                        type="email"
+                        id="email"
+                        onChange={OnChangeEmail}
+                        value={email}
+                        required
+                        className="login__input"
+                        placeholder="Email"
+                      />
+                    <p className="msg_email">{message_email}</p>
+                    </div>
+                    {isSubmitted && email === '' && <p className="required"> This field is required </p>}
+  
+                    <div className="login__field">
+                        <i className="login__icon fas fa-lock"></i>
+                        <input 
+                        type="password" 
+                        id="password"
+                        onChange={OnChangePassword}
+                        value={password}
+                        required
+                        className="login__input"
+                        placeholder="Password"/>
+                        
+                    <p>{message_password}</p>
+                    {isSubmitted && password === '' && <p className="required"> This field is required </p>}
+                    </div>
+                    <p>{error}</p>
+  
+                    <button className="button login__submit" onClick={OnSubmitForm}>
+                        <span className="button__text">Log In Now</span >
+                        <i className="button__icon fas fa-chevron-right"></i>
+                    </button>				
+                </form>
+            </div>
+            <div className="screen__background">
+                <span className="screen__background__shape screen__background__shape4"></span>
+                <span className="screen__background__shape screen__background__shape3"></span>		
+                <span className="screen__background__shape screen__background__shape2"></span>
+                <span className="screen__background__shape screen__background__shape1"></span>
+            </div>		
         </div>
-        <div className="screen__background">
-            <span className="screen__background__shape screen__background__shape4"></span>
-            <span className="screen__background__shape screen__background__shape3"></span>		
-            <span className="screen__background__shape screen__background__shape2"></span>
-            <span className="screen__background__shape screen__background__shape1"></span>
-        </div>		
-      </div>
-      {isSubmitted && email === '' && (
-        <p className="required"> This field is required </p>
-      )}
-
-      <div className="login__field">
-        <i className="login__icon fas fa-lock"></i>
-        <input
-          type="password"
-          id="password"
-          onChange={OnChangePassword}
-          value={password}
-          required
-          className="login__input"
-          placeholder="Password"
-        />
-
-        <p>{message_password}</p>
-        {isSubmitted && password === '' && (
-          <p className="required"> This field is required </p>
-        )}
-      </div>
-
-      <button className="button login__submit" onClick={OnSubmitForm}>
-        <span className="button__text">Log In Now</span>
-        <i className="button__icon fas fa-chevron-right"></i>
-      </button>
-    
-      <div className="screen__background">
-        <span className="screen__background__shape screen__background__shape4"></span>
-        <span className="screen__background__shape screen__background__shape3"></span>
-        <span className="screen__background__shape screen__background__shape2"></span>
-        <span className="screen__background__shape screen__background__shape1"></span>
-      </div>
     </div>
   );
 }
