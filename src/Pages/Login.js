@@ -59,16 +59,14 @@ function Login(){
     )
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('token', res?.data?.jwt)
         navigate('/Dashboard')
       })
       .catch((err) => {
+        console.log(err?.response?.data?.error)
         if (err.code === 'ERR_BAD_REQUEST') 
 
-
-
-
-        setError('Not Found');
+        setError('Invalid identifier or password');
         console.log(err)
       })
   }
@@ -88,7 +86,6 @@ function Login(){
                             required
                             className="login__input"
                             placeholder="Email"/>
-                        {/* <p>{error}</p> */}
                         <p className="msg_email">{message_email}</p>
 
                         </div>
@@ -108,6 +105,7 @@ function Login(){
                         <p>{message_password}</p>
                         {isSubmitted && password === '' && <p className="required"> This field is required </p>}
                         </div>
+                        <p>{error}</p>
 
                         <button className="button login__submit" onClick={OnSubmitForm}>
                             <span className="button__text">Log In Now</span >

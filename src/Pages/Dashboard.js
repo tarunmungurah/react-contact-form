@@ -11,11 +11,12 @@ function Dashboard(){
     },[])
     
 
-    return <div>This is the login directed
+    return <div>This is the login directed page
         <button className="btn btn-danger"  onClick={() => {
                 localStorage.removeItem('token')
                 navigate('/Login')
             }}>Logout</button> 
+
 
     </div>;
 }
