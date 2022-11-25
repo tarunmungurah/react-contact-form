@@ -59,10 +59,15 @@ function Login(){
     )
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem('token', res.data.token)
         navigate('/Dashboard')
       })
       .catch((err) => {
         if (err.code === 'ERR_BAD_REQUEST') 
+
+
+
+
         setError('Not Found');
         console.log(err)
       })
@@ -88,8 +93,6 @@ function Login(){
 
                         </div>
                         {isSubmitted && email === '' && <p className="required"> This field is required </p>}
-
-
 
                         <div className="login__field">
                             <i className="login__icon fas fa-lock"></i>
