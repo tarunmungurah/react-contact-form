@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,8 +12,12 @@ function Login() {
   const [message_password, setMessagePassword] = useState('');
   const navigate = useNavigate();
 
+  const [isloading, SetLoading] = useState(false);
+
   const emailValidation = () => {
-    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+    
+    ;
     // if(regEx.test(email)){
     //   setMessage("Email is Valid")
     if (!regEx.test(email) && email !== '') {
@@ -46,6 +50,7 @@ function Login() {
   function OnSubmitForm(e) {
     emailValidation();
     // passwordValidation()
+    SetLoading(true);
     setisSubmitted(true);
     e.preventDefault();
 
@@ -63,12 +68,14 @@ function Login() {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem('token', res?.data?.jwt);
-        navigate('/Dashboard')
+        navigate('/Dashboard');
+        SetLoading(true);
       })
       .catch((err) => {
         console.log(err?.response?.data?.error)
         if (err.code === 'ERR_BAD_REQUEST') setError('Invalid identifier or password');
-        console.log(err)
+        console.log(err);
+        SetLoading(false);
       })
       
     }
@@ -110,10 +117,14 @@ function Login() {
                     </div>
                     <p>{error}</p>
   
-                    <button className="button login__submit" onClick={OnSubmitForm}>
+                    { !isloading && <button className="button login__submit" onClick={OnSubmitForm}>
                         <span className="button__text">Log In Now</span >
                         <i className="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                    </button>		}		
+                    { isloading && <button className="button login__submit" disabled>
+                        <span className="button__text">Loading</span >
+                        <i className="button__icon fas fa-spinner fa-spin"></i>
+                    </button>		}	
                 </form>
             </div>
             <div className="screen__background">
